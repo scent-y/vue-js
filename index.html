@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+  <style>
+      input {
+          display: block;
+      }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Vue.jsと連携したHTMLコードを書く場所 -->
+    {{ message }}
+    <input type="text"
+    v-model="message">
+  </div>
+
+  <script>
+    // JavaScriptコードを書く場所
+    new Vue({ 
+        el: '#app',
+        data: {
+            message:"hello world"
+        }
+    });
+  </script>
+  
+</body>
+</html>

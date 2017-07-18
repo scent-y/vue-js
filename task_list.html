@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+  <title>diary</title>
+</head>
+<body>
+<div class="container" id="app">
+  <h1 class="title">diary</h1>
+
+  <h2 class="subtitle">today {{ today }}</h2> 
+ 
+  <input type="text" v-model="message">
+    <ul>
+    	<li v-for="(item,key) in items">{{ item.message }}({{ item.date }})<button v-on:click="deleteItems(key)">delete</button></li>
+    </ul>
+    <button v-on:click="addItems">write</button>
+</div>
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    today: moment().format('YYYY/MM/DD'),
+    message: '',
+    items: []
+  },
+  methods: {
+	 	addItems: function() {
+	 		this.items.push({message: this.message, date: moment().format('YYYY/MM/DD')})
+	 		this.message = ''
+	 	},
+	 	deleteItems: function(key) {
+	 		Vue.delete(this.items,key)
+	 	}
+	 }
+});
+</script>
+</body>
+</html>
